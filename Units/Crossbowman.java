@@ -6,6 +6,14 @@ public class Crossbowman extends Ranged{
     }
     @Override
     public String toString(){
-        return name;
+        return "Арбалетчик";
     }
+@Override
+public void step(){
+
+}
+@Override
+public String getInfo(){
+    return super.getInfo();
+}
 }

@@ -6,12 +6,20 @@ public class Wizard extends Mage{
     }
     @Override
     public String toString(){
-        return name;
+        return "Колдун";
     }
     void fireball(){
 
     }
     void snowball(){
         
+    }
+    @Override
+    public void step(){
+    
+    }
+    @Override
+    public String getInfo(){
+        return super.getInfo();
     }
 }

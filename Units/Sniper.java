@@ -6,6 +6,14 @@ public class Sniper extends Ranged{
     }
     @Override
     public String toString(){
-        return name;
+        return "Снайпер";
+    }
+    @Override
+    public void step(){
+    
+    }
+    @Override
+    public String getInfo(){
+        return super.getInfo();
     }
 }

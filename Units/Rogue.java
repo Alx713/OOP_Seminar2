@@ -6,6 +6,14 @@ public class Rogue extends Melee {
     }
     @Override
     public String toString(){
-        return name;
+        return "Разбойник";
+    }
+    @Override
+    public void step(){
+    
+    }
+    @Override
+    public String getInfo(){
+        return super.getInfo();
     }
 }

@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Random;
+import Units.Names;
+import Units.Melee;
 import Units.Peasant;
 import Units.Rogue;
 import Units.Sniper;
@@ -8,19 +12,48 @@ import Units.Monk;
 
 public class Main{
     public static void main(String[] args){
-        Peasant peasant = new Peasant("Крестьянин");
-        Rogue rogue = new Rogue("Разбойник");
-        Sniper sniper = new Sniper("Снайпер");
-        Wizard wizard = new Wizard("Колдун");
-        Spearman spearman = new Spearman("Копейщик");
-        Crossbowman crossbowman = new Crossbowman("Арбалетчик");
-        Monk monk = new Monk("Монах");
-        System.out.println(peasant);
-        System.out.println(rogue);
-        System.out.println(sniper);
-        System.out.println(spearman);
-        System.out.println(crossbowman);
-        System.out.println(monk);
-        System.out.println(wizard);
+        ArrayList<Melee> team1 = new ArrayList<>();
+        for (int i = 0; i < 10; i++){
+            switch (new Random().nextInt(4)){
+                case 0:
+                team1.add(new Peasant(getName()));
+                break;
+                case 1:
+                team1.add(new Spearman(getName()));
+                break;
+                case 2:
+                team1.add(new Crossbowman(getName()));
+                case 3:
+                team1.add(new Wizard(getName()));
+                break;
+            }
+        }
+        System.out.println("[Команда 1]");
+        team1.forEach(n -> System.out.println(n.getInfo()));
+        System.out.println();
+
+        ArrayList<Melee> team2 = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            switch (new Random().nextInt(4)) {
+                case 0:
+                    team2.add(new Peasant(getName()));
+                    break;
+                case 1:
+                    team2.add(new Rogue(getName()));
+                    break;
+                case 2: 
+                    team2.add(new Sniper(getName()));
+                    break;
+                case 3:
+                    team2.add(new Monk(getName()));
+                    break;
+            }
+        }
+        System.out.println("[Команда 2]");
+        team2.forEach(n -> System.out.println(n.getInfo()));
+    }
+    private static String getName(){
+        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length)]);
+    
     }
 }
