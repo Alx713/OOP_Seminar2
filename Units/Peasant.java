@@ -1,8 +1,8 @@
 package Units;
-
+import java.util.ArrayList;
 public class Peasant extends Melee {
-    public Peasant(String name){
-        super(name, 10, 1,0,2,2);
+    public Peasant(String name, ArrayList<Melee> team){
+        super(name, 10, 1,0,2,2, team);
     }
     @Override
     public String toString(){

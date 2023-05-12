@@ -1,12 +1,14 @@
 package Units;
+import java.util.ArrayList;
 
 public abstract class Melee implements GameInterface{
     String name;
     float maxHp, currentHp, damage, armor, speed;
-    int initiative;
+    public int initiative;
+    ArrayList<Melee> team;
 
 
-Melee(String name, float maxHp, float damage, float armor, float speed, int initiative){
+Melee(String name, float maxHp, float damage, float armor, float speed, int initiative, ArrayList<Melee> team){
     this.name = name;
     this.maxHp = maxHp;
     this.currentHp = maxHp;
@@ -14,6 +16,7 @@ Melee(String name, float maxHp, float damage, float armor, float speed, int init
     this.armor = armor;
     this.speed = speed;
     this.initiative = initiative;
+    this.team = team;
 }
 
 void attack(){

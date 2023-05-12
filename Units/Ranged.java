@@ -1,10 +1,11 @@
 package Units;
+import java.util.ArrayList;
 
 public abstract class Ranged extends Melee{
     int distance, ammo;
 
-    Ranged(String name, float maxHp, float damage, float armor, float speed, int initiative, int ammo, int distance){
-        super(name, maxHp, damage, armor, speed, initiative);
+    Ranged(String name, float maxHp, float damage, float armor, float speed, int initiative, int ammo, int distance, ArrayList<Melee> team){
+        super(name, maxHp, damage, armor, speed, initiative, team);
         this.ammo = ammo;
         this.distance = distance;
     }

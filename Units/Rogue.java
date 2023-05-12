@@ -1,8 +1,8 @@
 package Units;
-
+import java.util.ArrayList;
 public class Rogue extends Melee {
-    public Rogue(String name){
-        super(name, 15, 5, 1,5,5);
+    public Rogue(String name, ArrayList<Melee> team){
+        super(name, 15, 5, 1,5,5, team);
     }
     @Override
     public String toString(){
