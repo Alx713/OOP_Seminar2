@@ -2,8 +2,8 @@ package Units;
 import java.util.ArrayList;
 
 public class Monk extends Mage{
-    public Monk(String name, ArrayList<Melee> team){
-        super(name,7,7,2,7,7,7,7, team);
+    public Monk(String name, ArrayList<Melee> team, int x, int y){
+        super(name,7,7,2,7,7,7,7, team, x, y);
     }
     @Override
     public String toString(){
@@ -12,10 +12,7 @@ public class Monk extends Mage{
     void heal(){
         
     }
-    @Override
-    public void step(){
     
-    }
     @Override
     public String getInfo(){
         return super.getInfo();
