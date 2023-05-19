@@ -14,10 +14,10 @@ public class Peasant extends Melee {
     @Override
     public void step(ArrayList<Melee> enemy) {
         if (readiness) {
-            System.out.println(this + " " + this.name + " ничего не делает");
+            //System.out.println(this + " " + this.name + " ничего не делает");
         }else{
             readiness = true;
-            System.out.println(this + " " + this.name + " находит припасы");
+            //System.out.println(this + " " + this.name + " находит припасы");
         }
     }
     @Override

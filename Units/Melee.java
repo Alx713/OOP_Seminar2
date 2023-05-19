@@ -24,7 +24,7 @@ Melee(String name, float maxHp, float damage, float armor, float speed, int init
 
 void attack(Melee target){
 target.getDmage(damage);
-System.out.println(this.introduce() + " атакует " + target.introduce());
+//System.out.println(this.introduce() + " атакует " + target.introduce());
 }
 
 void defend(){
@@ -59,7 +59,7 @@ public String getInfo(){
 
 @Override
 public void step(ArrayList<Melee> enemy) {
-    System.out.println(getClass().getName());
+    //System.out.println(getClass().getName());
 }
 public Melee findNearUnit(ArrayList<Melee> team){
     Melee nearUnit = null;
@@ -77,5 +77,12 @@ public Melee findNearUnit(ArrayList<Melee> team){
 @Override
 public String introduce() {
     return this + " " + this.name;
+}
+public int[] getCoords() {
+    return new int[]{this.coordinate.y, coordinate.x};
+}
+
+public float getHp() {
+    return currentHp;
 }
 }

@@ -23,7 +23,7 @@ public void step(ArrayList<Melee> enemy) {
             if (unit.currentHp < unit.maxHp) {
                 unit.getDmage(-damage);
                 this.mana--;
-                System.out.println(this.introduce() + " лечит " + unit.introduce());
+                //System.out.println(this.introduce() + " лечит " + unit.introduce());
                 return;
             }
         }

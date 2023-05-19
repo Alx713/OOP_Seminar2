@@ -14,7 +14,7 @@ public abstract class Ranged extends Melee{
     }
     @Override
     public String getInfo(){
-        return super.getInfo() + "ammo:" + ammo + "distance" + distance;
+        return super.getInfo() + "ammo: " + ammo + "distance: " + distance;
     }
     @Override
     public void step(ArrayList<Melee> enemy) {
