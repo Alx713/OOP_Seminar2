@@ -20,7 +20,7 @@ public String getInfo(){
 public void step(ArrayList<Melee> enemy) {
     if (!die() && mana > 0) {
         for (Melee unit : team) {
-            if (unit.currentHp < unit.maxHp) {
+            if (!unit.die() && unit.currentHp < unit.maxHp) {
                 unit.getDmage(-damage);
                 this.mana--;
                 //System.out.println(this.introduce() + " лечит " + unit.introduce());

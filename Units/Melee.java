@@ -6,7 +6,7 @@ public abstract class Melee implements GameInterface{
     String name;
     float maxHp, currentHp, damage, armor, speed;
     public int initiative;
-    ArrayList<Melee> team, enemy;
+    ArrayList<Melee> team;
     Coordinate coordinate;
 
 
@@ -59,12 +59,21 @@ public String getInfo(){
 
 @Override
 public void step(ArrayList<Melee> enemy) {
-    //System.out.println(getClass().getName());
+    if (die()) {
+        return;
+    }
+    Melee target = findNearUnit(enemy);
+    if (target.coordinate.distance(this.coordinate) < 2) {
+        attack(target);
+    }else {
+        move(target);
+    }
 }
 public Melee findNearUnit(ArrayList<Melee> team){
     Melee nearUnit = null;
     float minDist = Float.MAX_VALUE;
     for (Melee unit : team) {
+        if(unit.die())continue;
         float dist = unit.coordinate.distance(this.coordinate);
         if (minDist > dist) {
             nearUnit = unit;
@@ -84,5 +93,58 @@ public int[] getCoords() {
 
 public float getHp() {
     return currentHp;
+}
+protected void move(Melee target){
+    int dx = target.coordinate.distanceXY(this.coordinate)[0];
+    int dy = target.coordinate.distanceXY(this.coordinate)[1];
+    if (Math.abs(dx) < Math.abs(dy)){
+        moveY(dx, dy, true);
+    }else {
+        moveX(dx, dy, true);
+    }
+}
+
+private void moveX(int dx, int dy, boolean flag){
+    if (dx > 0) {
+        if (isEmptyPosition(this.coordinate.x-1, this.coordinate.y)) {
+            this.coordinate.x--;
+        }else if(flag){
+            moveY(dx,dy, false);
+        }
+    }else {
+        if (isEmptyPosition(this.coordinate.x+1, this.coordinate.y)) {
+            this.coordinate.x++;
+        }else if(flag){
+            moveY(dx,dy, false);
+        }
+    }
+}
+private void moveY(int dx, int dy, boolean flag){
+    if (dy > 0) {
+        if (isEmptyPosition(this.coordinate.x, this.coordinate.y-1)) {
+            this.coordinate.y--;
+        }else if(flag){
+            moveX(dx,dy, false);
+        }
+    }else {
+        if (isEmptyPosition(this.coordinate.x, this.coordinate.y+1)) {
+            this.coordinate.y++;
+        }else if(flag){
+            moveX(dx,dy, false);
+        }
+}
+}
+
+
+
+protected boolean isEmptyPosition(int x, int y){
+    for (Melee unit: team) {
+        if (unit.coordinate.x == x && unit.coordinate.y == y) {
+            if (!unit.die()) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 }
